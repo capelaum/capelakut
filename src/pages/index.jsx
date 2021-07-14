@@ -16,7 +16,13 @@ import { api } from "../services/github";
 export default function Home() {
   const githubUser = "capelaum";
   const [friendsList, setFriendsList] = useState([]);
-  const [comunities, setcomunities] = useState([]);
+  const [comunities, setcomunities] = useState([
+    {
+      id: new Date().toISOString(),
+      title: "Eu odeio acordar cedo",
+      image: "https:alurakut.vercel.app/capa-comunidade-01.jpg",
+    },
+  ]);
 
   useEffect(() => {
     api.get("followers").then(response => setFriendsList(response.data));
@@ -24,9 +30,23 @@ export default function Home() {
 
   function handleCreateComunity(event) {
     event.preventDefault();
+    const formData = new FormData(event.target);
+    console.log("🚀 ~ event.target", event.target);
 
-    comunities.push("Alura stars");
-    setcomunities([...comunities]);
+    const title = formData.get("title");
+    const image = formData.get("image");
+
+    if (title.trim() === "" || image.trim() === "") {
+      return;
+    }
+
+    const newComunity = {
+      id: new Date().toISOString(),
+      title,
+      image,
+    };
+
+    setcomunities([...comunities, newComunity]);
   }
 
   return (
@@ -34,10 +54,10 @@ export default function Home() {
       <Head>
         <title>Capelakut | Home</title>
       </Head>
-      <CapelakutMenu />
+      <CapelakutMenu githubUser={githubUser} />
       <MainGrid>
         <div className="profileArea">
-          <Box>
+          <Box as="aside">
             <img
               src={`https://github.com/${githubUser}.png`}
               alt={githubUser}
@@ -78,7 +98,7 @@ export default function Home() {
                 <input
                   type="text"
                   placeholder="Coloque uma URL para usarmos de capa"
-                  name="title"
+                  name="image"
                   aria-label="Coloque uma URL para usarmos de capa"
                 />
               </div>
@@ -115,14 +135,11 @@ export default function Home() {
               Minhas Comunidades ({comunities.length})
             </h2>
             <ul>
-              {comunities.slice(0, 6).map((comunity, index) => (
-                <li key={`${comunity}-${index}`}>
-                  <a href={`/comunities/${comunity}`}>
-                    <img
-                      src={`https://source.unsplash.com/collection/10531823/300x300`}
-                      alt={comunity}
-                    />
-                    <span>{comunity}</span>
+              {comunities.slice(0, 6).map(comunity => (
+                <li key={`${comunity.id}`}>
+                  <a href={`/comunities/${comunity.title}`}>
+                    <img src={comunity.image} alt={comunity.title} />
+                    <span>{comunity.title}</span>
                   </a>
                 </li>
               ))}
