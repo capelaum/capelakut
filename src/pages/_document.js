@@ -13,7 +13,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <Html lang="pt-br">
         <Head>
           {this.props.styleTags}
           <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />

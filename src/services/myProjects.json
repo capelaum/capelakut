@@ -1,0 +1,164 @@
+[
+  {
+    "url": "https://www.capelletto.adv.br",
+    "img": "capelletto_advocacia.jpg",
+    "categoryText": "Website PHP",
+    "category": "php",
+    "title": "Capelletto Advocacia"
+  },
+  {
+    "url": "https://myjobs-calculator.herokuapp.com",
+    "img": "jobs-calculator.png",
+    "categoryText": "Node.js",
+    "category": "node",
+    "title": "Jobs Calculator"
+  },
+  {
+    "url": "https://capelacast.vercel.app",
+    "img": "capelacast.png",
+    "categoryText": "React",
+    "category": "react",
+    "title": "Podcast App"
+  },
+  {
+    "url": "https://capelaum-casa-criativa.herokuapp.com",
+    "img": "casa-criativa.png",
+    "categoryText": "Node.js",
+    "category": "node",
+    "title": "Casa Criativa"
+  },
+  {
+    "url": "https://space-travelling.vercel.app",
+    "img": "space-travelling.png",
+    "categoryText": "Blog Next.js",
+    "category": "react",
+    "title": "Space Travelling"
+  },
+  {
+    "url": "https://capelaum-rocketshoes.vercel.app",
+    "img": "rocketshoes.png",
+    "categoryText": "React",
+    "category": "react",
+    "title": "RocketShoes"
+  },
+  {
+    "url": "https://capelaum-github-finder.netlify.app",
+    "img": "github-finder.png",
+    "categoryText": "Javascript API",
+    "category": "javascript",
+    "title": "Github Finder"
+  },
+  {
+    "url": "https://capelaum-validador-cpf.netlify.app",
+    "img": "validadorCPF.png",
+    "categoryText": "Javascript",
+    "category": "javascript",
+    "title": "Validador CPF"
+  },
+  {
+    "url": "https://capelaum-newsgrid.netlify.app",
+    "img": "newsgrid.jpg",
+    "categoryText": "HTML & CSS",
+    "category": "css",
+    "title": "NewsGrid"
+  },
+  {
+    "url": "https://capelaum-dev-finances.netlify.app",
+    "img": "dev-finances-screenshot.png",
+    "categoryText": "Javascript",
+    "category": "javascript",
+    "title": "Dev.Finance$"
+  },
+  {
+    "url": "https://capelaum-gorestaurant.vercel.app",
+    "img": "go-restaurant.png",
+    "categoryText": "React",
+    "category": "react",
+    "title": "Go Restaurant"
+  },
+  {
+    "url": "https://ask-me-4967d.web.app",
+    "img": "ask-me.png",
+    "categoryText": "React",
+    "category": "react",
+    "title": "Ask me"
+  },
+  {
+    "url": "https://capelaum-pizza-cart.netlify.app",
+    "img": "pizzaJS.png",
+    "categoryText": "Javascript",
+    "category": "javascript",
+    "title": "JS Pizza Menu"
+  },
+  {
+    "url": "https://capelaum-notes-app.netlify.app",
+    "img": "notes_app.png",
+    "categoryText": "Javascript",
+    "category": "javascript",
+    "title": "Notes App"
+  },
+  {
+    "url": "https://capelaum-tasklist.netlify.app",
+    "img": "tasklist.png",
+    "categoryText": "Javascript",
+    "category": "javascript",
+    "title": "Task List"
+  },
+  {
+    "url": "https://capelaum-microposts.netlify.app",
+    "img": "microposts.png",
+    "categoryText": "Javascript",
+    "category": "javascript",
+    "title": "App de MicroPosts"
+  },
+  {
+    "url": "https://capelaum-memory-game.netlify.app",
+    "img": "memorygame.png",
+    "categoryText": "Javascript Game",
+    "category": "javascript",
+    "title": "Jogo da Memória"
+  },
+  {
+    "url": "https://capelaum-tracalorie.netlify.app",
+    "img": "tracalorie.png",
+    "categoryText": "Javascript",
+    "category": "javascript",
+    "title": "Contador de calorias"
+  },
+  {
+    "url": "https://capelaum-mine-sweeper.netlify.app",
+    "img": "minesweeper.png",
+    "categoryText": "Javascript Game",
+    "category": "javascript",
+    "title": "Campo Minado"
+  },
+  {
+    "url": "https://capelaum-edgeletter.netlify.app",
+    "img": "edgeletter.jpg",
+    "categoryText": "HTML & CSS",
+    "category": "css",
+    "title": "Website de Finanças"
+  },
+  {
+    "url": "https://capelaum.github.io/Projeto-AWAX",
+    "img": "awax.png",
+    "categoryText": "HTML & CSS",
+    "category": "css",
+    "title": "Awax website"
+  },
+  {
+    "url": "https://capelaum-hangman.netlify.app",
+    "img": "hangman.png",
+    "categoryText": "Javascript Game",
+    "category": "javascript",
+    "title": "Hangman"
+  },
+
+  {
+    "url": "https://capelaum-todos-app.netlify.app",
+    "img": "todos-app.png",
+    "categoryText": "Javascript",
+    "category": "javascript",
+    "title": "Todo app"
+  }
+]

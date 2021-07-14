@@ -12,26 +12,21 @@ import {
 } from "../lib/CapelakutCommons";
 
 import { api } from "../services/github";
+import myProjects from "../services/myProjects.json";
 
 export default function Home() {
   const githubUser = "capelaum";
   const [friendsList, setFriendsList] = useState([]);
-  const [comunities, setcomunities] = useState([
-    {
-      id: new Date().toISOString(),
-      title: "Eu odeio acordar cedo",
-      image: "https:alurakut.vercel.app/capa-comunidade-01.jpg",
-    },
-  ]);
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     api.get("followers").then(response => setFriendsList(response.data));
+    setProjects(myProjects);
   }, []);
 
-  function handleCreateComunity(event) {
+  function handleCreateProject(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    console.log("🚀 ~ event.target", event.target);
 
     const title = formData.get("title");
     const image = formData.get("image");
@@ -40,13 +35,15 @@ export default function Home() {
       return;
     }
 
-    const newComunity = {
+    const newProject = {
       id: new Date().toISOString(),
       title,
       image,
     };
 
-    setcomunities([...comunities, newComunity]);
+    setProjects([...projects, newProject]);
+    event.target.title.value = "";
+    event.target.image.value = "";
   }
 
   return (
@@ -85,7 +82,7 @@ export default function Home() {
 
           <Box>
             <h2 className="subTitle">O que você deseja fazer?</h2>
-            <form onSubmit={handleCreateComunity}>
+            <form onSubmit={handleCreateProject}>
               <div>
                 <input
                   type="text"
@@ -114,7 +111,10 @@ export default function Home() {
             <ul>
               {friendsList.slice(0, 6).map(friend => (
                 <li key={friend.login}>
-                  <a href={`/users/${friend.login}`}>
+                  <a
+                    href={`https://github.com/${friend.login}`}
+                    target="_blank"
+                  >
                     <img
                       src={`https://github.com/${friend.login}.png`}
                       alt={friend.login}
@@ -125,21 +125,24 @@ export default function Home() {
               ))}
             </ul>
             <hr />
-            <a href="#" className="boxLink">
+            <a href="/friends" className="boxLink">
               Ver Todos
             </a>
           </ProfileRelationsBoxWrapper>
 
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
-              Minhas Comunidades ({comunities.length})
+              Minhas Comunidades ({projects.length})
             </h2>
             <ul>
-              {comunities.slice(0, 6).map(comunity => (
-                <li key={`${comunity.id}`}>
-                  <a href={`/comunities/${comunity.title}`}>
-                    <img src={comunity.image} alt={comunity.title} />
-                    <span>{comunity.title}</span>
+              {projects.slice(0, 6).map(project => (
+                <li key={`${project.title}`}>
+                  <a href={project.url} target="_blank">
+                    <img
+                      src={`https://luis-capelletto-portfolio.netlify.app/assets/img/projects/${project.img}`}
+                      alt={project.title}
+                    />
+                    <span>{project.title}</span>
                   </a>
                 </li>
               ))}
