@@ -10,6 +10,11 @@ export const MainGrid = styled.main`
 
   .profileArea {
     display: none;
+
+    img {
+      border-radius: 8px;
+    }
+
     @media (min-width: 860px) {
       display: block;
     }
