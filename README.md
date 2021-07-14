@@ -1,11 +1,19 @@
 <div align="center">
   <img src=".github/Capelakut.png" />
   <h3>Um clone modificado do falecido orkut</h3>
+
+  <img alt="capelakut size" src="https://img.shields.io/github/repo-size/capelaum/capelakut?color=D81D99">
+
+  <img alt="capelakut language count" src="https://img.shields.io/github/languages/count/capelaum/capelakut?color=D81D99">
+
+  <img alt="capelakut last commit" src="https://img.shields.io/github/last-commit/capelaum/capelakut?color=D81D99">
+
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=D81D99">
 </div>
 
 ## Como executar
 
-Instale as dependências do projeto, rodando os comandos no diretório raiz
+Instale as dependências do projeto, executando os comandos no diretório raiz
 
 ```bash
 npm install
