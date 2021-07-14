@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { api } from "../services/github";
+
+import { MyHead } from "../components/Head";
 import { MainGrid } from "../components/MainGrid";
 import { Box } from "../components/Box";
-import { CapelakutMenu, OrkutNostalgicIconSet } from "../lib/CapelakutCommons";
 import { ProfileRelationsBoxWrapper } from "../components/ProfileRelations";
+
+import { CapelakutMenu, OrkutNostalgicIconSet } from "../lib/CapelakutCommons";
+
+import { api } from "../services/github";
 
 export default function Home() {
   const githubUser = "capelaum";
@@ -15,6 +19,7 @@ export default function Home() {
 
   return (
     <>
+      <MyHead page="Home" />
       <CapelakutMenu />
       <MainGrid>
         <div className="profileArea">

@@ -21,7 +21,7 @@ export function CapelakutMenu({ githubUser }) {
   return (
     <CapelakutMenu.Wrapper isMenuOpen={isMenuOpen}>
       <div className="container">
-        <CapelakutMenu.Logo src={`${BASE_URL}/logo.svg`} />
+        <CapelakutMenu.Logo src="logo.svg" />
 
         <nav style={{ flex: 1 }}>
           {[
