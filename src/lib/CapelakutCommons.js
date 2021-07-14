@@ -220,7 +220,7 @@ export function CapelakutProfileSidebarMenuDefault() {
           GitHub Trends
         </a>
         <a href="/logout">
-          <img src={`${BASE_URL}//icons/logout.svg`} />
+          <img src={`${BASE_URL}/icons/logout.svg`} />
           Sair
         </a>
       </nav>

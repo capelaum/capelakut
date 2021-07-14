@@ -1,5 +1,5 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { CapelakutStyles } from "../src/lib/CapelaKutCommons";
+import { CapelakutStyles } from "../lib/CapelakutCommons";
 
 const GlobalStyle = createGlobalStyle`
   * {
