@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import { MainGrid } from "../components/MainGrid";
 import { Box } from "../components/Box";
-import { ProfileRelationsBoxWrapper } from "../components/ProfileRelations";
+import { ProfileRelationsBox } from "../components/ProfileRelationsBox";
 
 import {
   CapelakutMenu,
@@ -32,6 +32,7 @@ export default function Home() {
     const image = formData.get("image");
 
     if (title.trim() === "" || image.trim() === "") {
+      alert("Por favor preencha os campos para criar um novo projeto 🙃");
       return;
     }
 
@@ -86,9 +87,9 @@ export default function Home() {
               <div>
                 <input
                   type="text"
-                  placeholder="Qual vai ser o nome da sua comunidade?"
+                  placeholder="Qual vai ser o nome do projeto?"
                   name="title"
-                  aria-label="Qual vai ser o nome da sua comunidade?"
+                  aria-label="Qual vai ser o nome do projeto?"
                 />
               </div>
               <div>
@@ -100,56 +101,14 @@ export default function Home() {
                 />
               </div>
 
-              <button>Criar comunidade</button>
+              <button>Criar Projeto</button>
             </form>
           </Box>
         </div>
 
         <div className="profileRelationsArea">
-          <ProfileRelationsBoxWrapper>
-            <h2 className="smallTitle">Meus Amigos ({friendsList.length})</h2>
-            <ul>
-              {friendsList.slice(0, 6).map(friend => (
-                <li key={friend.login}>
-                  <a
-                    href={`https://github.com/${friend.login}`}
-                    target="_blank"
-                  >
-                    <img
-                      src={`https://github.com/${friend.login}.png`}
-                      alt={friend.login}
-                    />
-                    <span>{friend.login}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <hr />
-            <a href="/friends" className="boxLink">
-              Ver Todos
-            </a>
-          </ProfileRelationsBoxWrapper>
-
-          <ProfileRelationsBoxWrapper>
-            <h2 className="smallTitle">Meus Projetos ({projects.length})</h2>
-            <ul>
-              {projects.slice(0, 6).map(project => (
-                <li key={`${project.title}`}>
-                  <a href={project.url} target="_blank">
-                    <img
-                      src={`https://luis-capelletto-portfolio.netlify.app/assets/img/projects/${project.img}`}
-                      alt={project.title}
-                    />
-                    <span>{project.title}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <hr />
-            <a href="#" className="boxLink">
-              Ver Todos
-            </a>
-          </ProfileRelationsBoxWrapper>
+          <ProfileRelationsBox data={friendsList} isFriendsList />
+          <ProfileRelationsBox data={projects} />
         </div>
       </MainGrid>
     </>
