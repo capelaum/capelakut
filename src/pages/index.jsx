@@ -11,16 +11,19 @@ import {
   OrkutNostalgicIconSet,
 } from "../lib/CapelakutCommons";
 
-import { api } from "../services/github";
+import { githubApi } from "../services/github";
 import myProjects from "../services/myProjects.json";
 
 export default function Home() {
-  const githubUser = "capelaum";
   const [friendsList, setFriendsList] = useState([]);
   const [projects, setProjects] = useState([]);
+  const githubUser = "capelaum";
 
   useEffect(() => {
-    api.get("followers").then(response => setFriendsList(response.data));
+    githubApi
+      .get("followers")
+      .then(response => setFriendsList(response.data))
+      .catch(error => console.error(error));
     setProjects(myProjects);
   }, []);
 
@@ -77,7 +80,7 @@ export default function Home() {
 
         <div className="welcomeArea">
           <Box>
-            <h1 className="title">Bem vindo(a)</h1>
+            <h1 className="title">Bem vindo(a), {githubUser}</h1>
             <OrkutNostalgicIconSet />
           </Box>
 

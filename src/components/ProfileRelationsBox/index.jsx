@@ -42,7 +42,7 @@ export function ProfileRelationsBox({ data, isFriendsList }) {
           ))}
         </ul>
         <hr />
-        <a href="#" className="boxLink">
+        <a href="/projects" className="boxLink">
           Ver Todos
         </a>
       </ProfileRelationsBoxWrapper>
