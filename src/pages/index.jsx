@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 
-import { MainGrid } from "../components/MainGrid";
 import { Box } from "../components/Box";
+import { MainGrid } from "../components/MainGrid";
+import { ProfileSidebar } from "../components/ProfileSidebar";
 import { ProfileRelationsBox } from "../components/ProfileRelationsBox";
 
-import {
-  CapelakutMenu,
-  CapelakutProfileSidebarMenuDefault,
-  OrkutNostalgicIconSet,
-} from "../lib/CapelakutCommons";
+import { CapelakutMenu, OrkutNostalgicIconSet } from "../lib/CapelakutCommons";
 
 import { githubApi } from "../services/github";
+import { datoApi } from "../services/datoCms";
 import myProjects from "../services/myProjects.json";
-import { ProfileSidebar } from "../components/ProfileSidebar";
 
 export default function Home() {
   const [friendsList, setFriendsList] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [allComunities, setAllComunities] = useState([]);
+  console.log("🚀 ~ allComunities", allComunities);
   const githubUser = "capelaum";
 
   useEffect(() => {
@@ -26,6 +25,22 @@ export default function Home() {
       .then(response => setFriendsList(response.data))
       .catch(error => console.error(error));
     setProjects(myProjects);
+
+    datoApi
+      .post("/", {
+        query: `{
+          allComunities {
+            id
+            title
+            creatorSlug
+            imageUrl
+            _status
+            _firstPublishedAt
+          }
+        }`,
+      })
+      .then(response => setAllComunities(response.data.data.allComunities))
+      .catch(error => console.error(error));
   }, []);
 
   function handleCreateCommunity(event) {
@@ -40,13 +55,13 @@ export default function Home() {
       return;
     }
 
-    const newProject = {
+    const newComunity = {
       id: new Date().toISOString(),
       title,
       image,
     };
 
-    setProjects([...projects, newProject]);
+    setAllComunities([...projects, newComunity]);
     event.target.title.value = "";
     event.target.image.value = "";
   }
@@ -74,28 +89,29 @@ export default function Home() {
               <div>
                 <input
                   type="text"
-                  placeholder="Qual vai ser o nome do projeto?"
                   name="title"
-                  aria-label="Qual vai ser o nome do projeto?"
+                  placeholder="Qual vai ser o nome da Comunidade?"
+                  aria-label="Qual vai ser o nome da Comunidade?"
                 />
               </div>
               <div>
                 <input
                   type="text"
-                  placeholder="Coloque uma URL para usarmos de capa"
                   name="image"
+                  placeholder="Coloque uma URL para usarmos de capa"
                   aria-label="Coloque uma URL para usarmos de capa"
                 />
               </div>
 
-              <button>Criar Projeto</button>
+              <button>Criar Comunidade</button>
             </form>
           </Box>
         </div>
 
         <div className="profileRelationsArea">
+          <ProfileRelationsBox data={projects} isProjectsList />
           <ProfileRelationsBox data={friendsList} isFriendsList />
-          <ProfileRelationsBox data={projects} />
+          <ProfileRelationsBox data={allComunities} isComunitiesList />
         </div>
       </MainGrid>
     </>
