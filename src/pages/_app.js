@@ -11,7 +11,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: url("https://source.unsplash.com/1920x1080/?space");
+    background: url("https://source.unsplash.com/1920x1080/?space") ;
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
   }
 
   #__next {
