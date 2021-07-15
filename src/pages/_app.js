@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #D9E6F6;
+    background: url("https://source.unsplash.com/1920x1080/?space");
   }
 
   #__next {

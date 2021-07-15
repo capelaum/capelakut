@@ -131,9 +131,7 @@ export default function Home() {
           </ProfileRelationsBoxWrapper>
 
           <ProfileRelationsBoxWrapper>
-            <h2 className="smallTitle">
-              Minhas Comunidades ({projects.length})
-            </h2>
+            <h2 className="smallTitle">Meus Projetos ({projects.length})</h2>
             <ul>
               {projects.slice(0, 6).map(project => (
                 <li key={`${project.title}`}>
