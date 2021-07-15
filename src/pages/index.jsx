@@ -13,6 +13,7 @@ import {
 
 import { githubApi } from "../services/github";
 import myProjects from "../services/myProjects.json";
+import { ProfileSidebar } from "../components/ProfileSidebar";
 
 export default function Home() {
   const [friendsList, setFriendsList] = useState([]);
@@ -27,7 +28,7 @@ export default function Home() {
     setProjects(myProjects);
   }, []);
 
-  function handleCreateProject(event) {
+  function handleCreateCommunity(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
 
@@ -58,24 +59,7 @@ export default function Home() {
       <CapelakutMenu githubUser={githubUser} />
       <MainGrid>
         <div className="profileArea">
-          <Box as="aside">
-            <img
-              src={`https://github.com/${githubUser}.png`}
-              alt={githubUser}
-            />
-            <hr />
-            <p>
-              <a
-                href={`https://github.com/${githubUser}`}
-                className="boxLink"
-                target="_blank"
-              >
-                @{githubUser}
-              </a>
-            </p>
-            <hr />
-            <CapelakutProfileSidebarMenuDefault />
-          </Box>
+          <ProfileSidebar githubUser={githubUser} />
         </div>
 
         <div className="welcomeArea">
@@ -86,7 +70,7 @@ export default function Home() {
 
           <Box>
             <h2 className="subTitle">O que você deseja fazer?</h2>
-            <form onSubmit={handleCreateProject}>
+            <form onSubmit={handleCreateCommunity}>
               <div>
                 <input
                   type="text"
