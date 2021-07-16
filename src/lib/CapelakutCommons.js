@@ -101,17 +101,21 @@ CapelakutMenu.Wrapper = styled.header`
   }
 
   .container {
+    position: ${({ isMenuOpen }) => (isMenuOpen ? "fixed" : "relative")};
+    width: ${({ isMenuOpen }) => (isMenuOpen ? "100%" : "auto")};
+
     background-color: #308bc5;
     padding: 7px 16px;
     max-width: 1110px;
     margin: auto;
     display: flex;
     justify-content: space-between;
-    position: relative;
     z-index: 101;
+
     @media (min-width: 860px) {
       justify-content: flex-start;
     }
+
     button {
       border: 0;
       background: transparent;
