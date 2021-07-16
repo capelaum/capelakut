@@ -5,8 +5,9 @@ import { Box } from "../components/Box";
 import { MainGrid } from "../components/MainGrid";
 import { ProfileSidebar } from "../components/ProfileSidebar";
 import { ProfileRelationsBox } from "../components/ProfileRelationsBox";
+import { OrkutNostalgicIconSet } from "../components/OrkutNostalgicIconSet";
 
-import { CapelakutMenu, OrkutNostalgicIconSet } from "../lib/CapelakutCommons";
+import { CapelakutMenu } from "../lib/CapelakutCommons";
 
 import { githubApi } from "../services/github";
 import { getAllComunities } from "../services/datoCms";

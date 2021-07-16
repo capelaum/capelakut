@@ -59,8 +59,10 @@ export function CapelakutMenu({ githubUser }) {
 CapelakutMenu.Wrapper = styled.header`
   width: 100%;
   background-color: #308bc5;
+
   .CapelakutMenuProfileSidebar {
     background: white;
+    overflow-y: scroll;
     position: fixed;
     z-index: 100;
     padding: 46px;
@@ -71,18 +73,23 @@ CapelakutMenu.Wrapper = styled.header`
     transition: 0.3s;
     pointer-events: ${({ isMenuOpen }) => (isMenuOpen ? "all" : "none")};
     opacity: ${({ isMenuOpen }) => (isMenuOpen ? "1" : "0")};
+
     transform: ${({ isMenuOpen }) =>
       isMenuOpen ? "translateY(0)" : "translateY(calc(-100% - 48px))"};
+
     @media (min-width: 860px) {
       display: none;
     }
+
     > div {
       max-width: 400px;
       margin: auto;
     }
+
     a {
       font-size: 18px;
     }
+
     .boxLink {
       font-size: 18px;
       color: #2e7bb4;
@@ -90,6 +97,7 @@ CapelakutMenu.Wrapper = styled.header`
       text-decoration: none;
       font-weight: 800;
     }
+
     hr {
       margin-top: 12px;
       margin-bottom: 8px;
@@ -97,6 +105,7 @@ CapelakutMenu.Wrapper = styled.header`
       border-bottom-color: #ecf2fa;
     }
   }
+
   .container {
     background-color: #308bc5;
     padding: 7px 16px;
@@ -247,102 +256,6 @@ CapelakutProfileSidebarMenuDefault.Wrapper = styled.div`
 // ================================================================================================================
 // OrkutNostalgicIconSet
 // ================================================================================================================
-export function OrkutNostalgicIconSet(props) {
-  return (
-    <OrkutNostalgicIconSet.List>
-      {[
-        { name: "Recados", slug: "recados", icon: "book" },
-        { name: "Fotos", slug: "fotos", icon: "camera" },
-        { name: "Videos", slug: "videos", icon: "video-camera" },
-        { name: "Fãs", slug: "fas", icon: "star" },
-        { name: "Mensagens", slug: "mensagens", icon: "email" },
-      ].map(({ name, slug, icon }) => (
-        <li key={`orkut__icon_set__${slug}`}>
-          <span
-            style={{ gridArea: "title" }}
-            className="OrkutNostalgicIconSet__title"
-          >
-            {name}
-          </span>
-          <span
-            className="OrkutNostalgicIconSet__number"
-            style={{ gridArea: "number" }}
-          >
-            <img
-              key={`orkut__icon_set__${slug}_img`}
-              className="OrkutNostalgicIconSet__iconSample"
-              src={`https://Alurakut.vercel.app/icons/${icon}.svg`}
-            />
-            {props[slug] ? props[slug] : 0}
-          </span>
-        </li>
-      ))}
-      {[
-        { name: "Confiável", slug: "confiavel", icon: "smile" },
-        { name: "Legal", slug: "legal", icon: "cool" },
-        { name: "Sexy", slug: "sexy", icon: "heart" },
-      ].map(({ name, slug, icon }) => {
-        const total = props[slug] ? props[slug] : 2;
-        return (
-          <li key={`orkut__icon_set__${slug}`}>
-            <span className="OrkutNostalgicIconSet__title">{name}</span>
-            <span
-              className="OrkutNostalgicIconSet__iconComplex"
-              className="OrkutNostalgicIconSet__number"
-              style={{ gridArea: "number" }}
-            >
-              {[0, 1, 2].map((_, index) => {
-                const isHeartActive = index <= total - 1;
-                return (
-                  <img
-                    key={`orkut__icon_set__${slug}_img_${index}`}
-                    src={`https://Alurakut.vercel.app/icons/${icon}.svg`}
-                    style={{
-                      marginRight: "2px",
-                      opacity: isHeartActive ? 1 : "0.5",
-                    }}
-                  />
-                );
-              })}
-            </span>
-          </li>
-        );
-      })}
-    </OrkutNostalgicIconSet.List>
-  );
-}
-OrkutNostalgicIconSet.List = styled.ul`
-  margin-top: 32px;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  li {
-    font-size: 12px;
-    color: #5a5a5a;
-    display: grid;
-    grid-template-areas:
-      "title title"
-      "number number";
-
-    &:not(:last-child) {
-      margin-right: 5px;
-    }
-    .OrkutNostalgicIconSet__title {
-      display: block;
-      font-style: italic;
-    }
-    .OrkutNostalgicIconSet__number {
-      min-width: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      .OrkutNostalgicIconSet__iconSample {
-        margin-right: 7px;
-      }
-    }
-  }
-`;
 
 // ================================================================================================================
 // Login Page
@@ -525,5 +438,16 @@ export const CapelakutStyles = css`
       box-shadow: 0px 0px 5px #33333357;
     }
   }
+
+  #__next {
+    overflow-y: ${({ isMenuOpen }) => (isMenuOpen ? "none" : "scroll")};
+    max-height: 100vh;
+
+    .MainGrid {
+      max-height: ${({ isMenuOpen }) => (isMenuOpen ? "100vh" : "auto")};
+      overflow-y: ${({ isMenuOpen }) => (isMenuOpen ? "none" : "scroll")};
+    }
+  }
+
   ${CapelakutLoginScreen}
 `;
