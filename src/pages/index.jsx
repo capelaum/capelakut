@@ -10,13 +10,13 @@ import { OrkutNostalgicIconSet } from "../components/OrkutNostalgicIconSet";
 import { CapelakutMenu } from "../lib/CapelakutCommons";
 
 import { githubApi } from "../services/github";
-import { getAllComunities } from "../services/datoCms";
+import { getAllComunities, getAllComunityRecords } from "../services/datoCms";
 import myProjects from "../services/myProjects.json";
 
-export default function Home({ data }) {
+export default function Home({ allComunityRecords }) {
   const [friendsList, setFriendsList] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [allComunities, setAllComunities] = useState([...data.allComunities]);
+  const [allComunities, setAllComunities] = useState([...allComunityRecords]);
   const githubUser = "capelaum";
 
   useEffect(() => {
@@ -125,7 +125,11 @@ export async function getStaticProps() {
     query: COMUNITY_QUERY,
   });
 
+  const allComunityRecords = await getAllComunityRecords({
+    comunityId: "968816",
+  });
+
   return {
-    props: { data },
+    props: { allComunityRecords },
   };
 }

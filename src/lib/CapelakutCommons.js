@@ -49,6 +49,7 @@ export function CapelakutMenu({ githubUser }) {
     </CapelakutMenu.Wrapper>
   );
 }
+
 CapelakutMenu.Wrapper = styled.header`
   width: 100%;
   background-color: #308bc5;
@@ -167,6 +168,7 @@ CapelakutMenu.Wrapper = styled.header`
     }
   }
 `;
+
 CapelakutMenu.Logo = styled.img`
   background-color: #ffffff;
   padding: 9px 14px;
