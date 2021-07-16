@@ -1,18 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import NextLink from "next/link";
 import { CapelakutProfileSidebarMenuDefault } from "../components/CapelakutProfileSidebarMenuDefault";
+import { Link } from "../components/Link";
 
 const BASE_URL = "http://Alurakut.vercel.app";
 const v = "1";
-
-function Link({ href, children, ...props }) {
-  return (
-    <NextLink href={href} passHref>
-      <a {...props}>{children}</a>
-    </NextLink>
-  );
-}
 
 // ================================================================================================================
 // Menu
@@ -71,6 +63,7 @@ CapelakutMenu.Wrapper = styled.header`
     left: 0;
     right: 0;
     top: 48px;
+    bottom: 0;
     transition: 0.3s;
     pointer-events: ${({ isMenuOpen }) => (isMenuOpen ? "all" : "none")};
     opacity: ${({ isMenuOpen }) => (isMenuOpen ? "1" : "0")};
@@ -392,11 +385,6 @@ export const CapelakutStyles = css`
   #__next {
     overflow-y: ${({ isMenuOpen }) => (isMenuOpen ? "none" : "scroll")};
     max-height: 100vh;
-
-    .MainGrid {
-      max-height: ${({ isMenuOpen }) => (isMenuOpen ? "100vh" : "auto")};
-      overflow-y: ${({ isMenuOpen }) => (isMenuOpen ? "none" : "scroll")};
-    }
   }
 
   ${CapelakutLoginScreen}
