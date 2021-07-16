@@ -125,9 +125,7 @@ export async function getStaticProps() {
     query: COMUNITY_QUERY,
   });
 
-  const allComunityRecords = await getAllComunityRecords({
-    comunityId: "968816",
-  });
+  const allComunityRecords = await getAllComunityRecords();
 
   return {
     props: { allComunityRecords },
