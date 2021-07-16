@@ -10,8 +10,8 @@ import { OrkutNostalgicIconSet } from "../components/OrkutNostalgicIconSet";
 import { CapelakutMenu } from "../lib/CapelakutCommons";
 
 import { githubApi } from "../services/github";
-import { getAllComunities, getAllComunityRecords } from "../services/datoCms";
 import myProjects from "../services/myProjects.json";
+import { getAllComunities, getAllComunityRecords } from "../services/datoCms";
 
 export default function Home({ allComunityRecords }) {
   const [friendsList, setFriendsList] = useState([]);
