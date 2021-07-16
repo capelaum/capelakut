@@ -1,5 +1,5 @@
-import { CapelakutProfileSidebarMenuDefault } from "../../lib/CapelakutCommons";
 import { Box } from "../Box";
+import { CapelakutProfileSidebarMenuDefault } from "../CapelakutProfileSidebarMenuDefault";
 
 export function ProfileSidebar({ githubUser }) {
   return (
