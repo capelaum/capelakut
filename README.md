@@ -33,6 +33,8 @@ yarn dev
 
 - [React.js][reactjs]
 - [Next.js][next]
+- [Axios][axios]
+- [GraphQL][graphql]
 
 ## Layout
 
@@ -46,3 +48,5 @@ Projeto feito no evento de Imersão React 3.0 da [Alura][alura]
 [next]: https://nextjs.org
 [alura]: https://www.alura.com.br
 [figma]: https://www.figma.com/file/xHF0n0qxiE2rqjqAILiBUB/Alurakut?node-id=58%3A0
+[axios]: https://axios-http.com/docs/intro
+[graphql]: https://graphql.org

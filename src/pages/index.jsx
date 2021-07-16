@@ -9,14 +9,13 @@ import { ProfileRelationsBox } from "../components/ProfileRelationsBox";
 import { CapelakutMenu, OrkutNostalgicIconSet } from "../lib/CapelakutCommons";
 
 import { githubApi } from "../services/github";
-import { datoApi } from "../services/datoCms";
+import { getAllComunities } from "../services/datoCms";
 import myProjects from "../services/myProjects.json";
 
-export default function Home() {
+export default function Home({ data }) {
   const [friendsList, setFriendsList] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [allComunities, setAllComunities] = useState([]);
-  console.log("🚀 ~ allComunities", allComunities);
+  const [allComunities, setAllComunities] = useState([...data.allComunities]);
   const githubUser = "capelaum";
 
   useEffect(() => {
@@ -25,43 +24,36 @@ export default function Home() {
       .then(response => setFriendsList(response.data))
       .catch(error => console.error(error));
     setProjects(myProjects);
-
-    datoApi
-      .post("/", {
-        query: `{
-          allComunities {
-            id
-            title
-            creatorSlug
-            imageUrl
-            _status
-            _firstPublishedAt
-          }
-        }`,
-      })
-      .then(response => setAllComunities(response.data.data.allComunities))
-      .catch(error => console.error(error));
   }, []);
 
   function handleCreateCommunity(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-
     const title = formData.get("title");
-    const image = formData.get("image");
+    const imageUrl = formData.get("image");
 
-    if (title.trim() === "" || image.trim() === "") {
+    if (title.trim() === "" || imageUrl.trim() === "") {
       alert("Por favor preencha os campos para criar um novo projeto 🙃");
       return;
     }
 
     const newComunity = {
-      id: new Date().toISOString(),
       title,
-      image,
+      imageUrl,
+      creatorSlug: githubUser,
     };
 
-    setAllComunities([...projects, newComunity]);
+    fetch("api/comunities", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newComunity),
+    }).then(async response => {
+      const data = await response.json();
+      setAllComunities([...allComunities, data.record]);
+    });
+
     event.target.title.value = "";
     event.target.image.value = "";
   }
@@ -116,4 +108,23 @@ export default function Home() {
       </MainGrid>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const COMUNITY_QUERY = `query {
+    allComunities {
+      id
+      title
+      creatorSlug
+      imageUrl
+    }
+  }`;
+
+  const data = await getAllComunities({
+    query: COMUNITY_QUERY,
+  });
+
+  return {
+    props: { data },
+  };
 }
