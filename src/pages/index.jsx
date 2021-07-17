@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import nookies, { destroyCookie } from "nookies";
+import nookies from "nookies";
 import { toast } from "react-toastify";
 
 import { Box } from "../components/Box";
@@ -19,6 +19,7 @@ export default function Home({ allComunityRecords, githubUser }) {
   const [friendsList, setFriendsList] = useState([]);
   const [projects, setProjects] = useState([]);
   const [allComunities, setAllComunities] = useState([...allComunityRecords]);
+  const [activeButton, setActiveButton] = useState(false);
 
   useEffect(() => {
     githubApi
@@ -65,6 +66,15 @@ export default function Home({ allComunityRecords, githubUser }) {
     event.target.url.value = "";
   }
 
+  function handleSetActiveButton(e) {
+    e.preventDefault();
+
+    const optionButtons = document.getElementsByClassName("option-btn");
+    Array.from(optionButtons).forEach(btn => btn.classList.remove("active"));
+
+    e.target.classList.add("active");
+  }
+
   return (
     <>
       <Head>
@@ -93,6 +103,21 @@ export default function Home({ allComunityRecords, githubUser }) {
 
           <Box>
             <h2 className="subTitle">O que você deseja fazer?</h2>
+
+            <button
+              className="option-btn active"
+              onClick={e => handleSetActiveButton(e)}
+            >
+              Criar Comunidade
+            </button>
+
+            <button
+              className="option-btn"
+              onClick={e => handleSetActiveButton(e)}
+            >
+              Escrever depoimento
+            </button>
+
             <form onSubmit={handleCreateCommunity}>
               <div>
                 <input
@@ -119,7 +144,7 @@ export default function Home({ allComunityRecords, githubUser }) {
                 />
               </div>
 
-              <button>Criar Comunidade</button>
+              <button className="submit-btn">Criar Comunidade</button>
             </form>
           </Box>
         </div>

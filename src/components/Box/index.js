@@ -48,11 +48,32 @@ export const Box = styled.div`
       opacity: 1;
     }
   }
-  button {
-    border: 0;
+
+  .submit-btn {
+    border: none;
     padding: 8px 12px;
     color: #ffffff;
-    border-radius: 10000px;
+    border-radius: 999px;
     background-color: #6f92bb;
+  }
+
+  .option-btn {
+    color: #2e7bb4;
+    background-color: #d9e6f6;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 16px;
+
+    transition: all 0.3s;
+  }
+
+  .option-btn.active {
+    background-color: #6f92bb;
+    color: #ffffff;
+  }
+
+  .option-btn:not(:last-child) {
+    margin-right: 16px;
   }
 `;
