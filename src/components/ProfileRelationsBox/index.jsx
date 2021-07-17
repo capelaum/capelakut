@@ -67,7 +67,7 @@ export function ProfileRelationsBox({
         <ul>
           {data.slice(0, 6).map(comunity => (
             <li key={`${comunity.id}`}>
-              <a href={comunity.imageUrl} target="_blank">
+              <a href={comunity.url} target="_blank">
                 <img src={comunity.imageUrl} alt={comunity.title} />
                 <span>{comunity.title}</span>
               </a>

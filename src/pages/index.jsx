@@ -33,10 +33,11 @@ export default function Home({ allComunityRecords, githubUser }) {
     const formData = new FormData(event.target);
     const title = formData.get("title");
     const imageUrl = formData.get("image");
+    const url = formData.get("url");
 
-    if (title.trim() === "" || imageUrl.trim() === "") {
+    if (title.trim() === "" || imageUrl.trim() === "" || url.trim() === "") {
       toast.error(
-        "Por favor preencha os campos para criar uma nova Comunidade 🙃"
+        "Por favor preencha todos os campos para criar uma nova Comunidade 🙃"
       );
       return;
     }
@@ -44,6 +45,7 @@ export default function Home({ allComunityRecords, githubUser }) {
     const newComunity = {
       title,
       imageUrl,
+      url,
       creatorSlug: githubUser,
     };
 
@@ -60,6 +62,7 @@ export default function Home({ allComunityRecords, githubUser }) {
 
     event.target.title.value = "";
     event.target.image.value = "";
+    event.target.url.value = "";
   }
 
   return (
@@ -97,6 +100,14 @@ export default function Home({ allComunityRecords, githubUser }) {
                   name="title"
                   placeholder="Qual vai ser o nome da Comunidade?"
                   aria-label="Qual vai ser o nome da Comunidade?"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="url"
+                  placeholder="Coloque uma URL para a Comunidade"
+                  aria-label="Coloque uma URL para a Comunidade"
                 />
               </div>
               <div>
