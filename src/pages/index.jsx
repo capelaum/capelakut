@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import nookies from "nookies";
+import nookies, { destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 
 import { Box } from "../components/Box";
@@ -124,7 +124,6 @@ export async function getServerSideProps(context) {
       },
     }
   ).then(response => response.json());
-
   console.log(isAuthenticated);
 
   if (!isAuthenticated) {
