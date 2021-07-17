@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import nookies, { destroyCookie } from "nookies";
-import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 import { Box } from "../components/Box";
 import { MainGrid } from "../components/MainGrid";
@@ -124,7 +124,6 @@ export async function getServerSideProps(context) {
       },
     }
   ).then(response => response.json());
-  console.log(isAuthenticated);
 
   if (!isAuthenticated) {
     return {

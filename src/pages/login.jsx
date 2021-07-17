@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import nookies from "nookies";
+import { toast } from "react-toastify";
 
 export default function LoginScreen() {
   const [githubUser, setGithubUser] = useState("");
   const router = useRouter();
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
 
-    fetch("https://alurakut.vercel.app/api/login", {
+    const token = await fetch("https://alurakut.vercel.app/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,15 +18,27 @@ export default function LoginScreen() {
       body: JSON.stringify({ githubUser: githubUser }),
     }).then(async response => {
       const data = await response.json();
-      const token = data.token;
-
-      nookies.set(null, "USER_TOKEN", token, {
-        path: "/",
-        maxAge: 24 * 60 * 60 * 7,
-      });
-
-      router.push("/");
+      return data.token;
     });
+
+    const { isAuthenticated } = await fetch("api/auth", {
+      headers: {
+        Authorization: token,
+      },
+    }).then(async response => await response.json());
+
+    if (!isAuthenticated) {
+      toast.error("Usuário github inválido!");
+      return;
+    }
+
+    toast.success("Usuário Github autenticado com sucesso");
+    nookies.set(null, "USER_TOKEN", token, {
+      path: "/",
+      maxAge: 24 * 60 * 60 * 7,
+    });
+
+    router.push("/");
   }
 
   return (
