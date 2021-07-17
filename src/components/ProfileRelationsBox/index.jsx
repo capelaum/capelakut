@@ -24,7 +24,11 @@ export function ProfileRelationsBox({
           ))}
         </ul>
         <hr />
-        <a href="/projects" className="boxLink">
+        <a
+          href="https://luis-capelletto-portfolio.netlify.app"
+          className="boxLink"
+          target="_blank"
+        >
           Ver Todos
         </a>
       </ProfileRelationsBoxWrapper>
@@ -49,7 +53,7 @@ export function ProfileRelationsBox({
           ))}
         </ul>
         <hr />
-        <a href="/friends" className="boxLink">
+        <a href="/friends" className="boxLink" target="_blank">
           Ver Todos
         </a>
       </ProfileRelationsBoxWrapper>
@@ -71,7 +75,7 @@ export function ProfileRelationsBox({
           ))}
         </ul>
         <hr />
-        <a href="/comunities" className="boxLink">
+        <a href="/comunities" className="boxLink" target="_blank">
           Ver Todos
         </a>
       </ProfileRelationsBoxWrapper>

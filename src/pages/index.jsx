@@ -35,7 +35,9 @@ export default function Home({ allComunityRecords, githubUser }) {
     const imageUrl = formData.get("image");
 
     if (title.trim() === "" || imageUrl.trim() === "") {
-      alert("Por favor preencha os campos para criar um novo projeto 🙃");
+      toast.error(
+        "Por favor preencha os campos para criar uma nova Comunidade 🙃"
+      );
       return;
     }
 
@@ -74,7 +76,16 @@ export default function Home({ allComunityRecords, githubUser }) {
         <div className="welcomeArea">
           <Box>
             <h1 className="title">Bem vindo(a), {githubUser}</h1>
-            <OrkutNostalgicIconSet />
+            <OrkutNostalgicIconSet
+              recados={5}
+              fotos={33}
+              videos={15}
+              fas={999}
+              mensagens={666}
+              confiavel={3}
+              legal={3}
+              sexy={3}
+            />
           </Box>
 
           <Box>
@@ -104,8 +115,8 @@ export default function Home({ allComunityRecords, githubUser }) {
 
         <div className="profileRelationsArea">
           <ProfileRelationsBox data={projects} isProjectsList />
-          <ProfileRelationsBox data={friendsList} isFriendsList />
           <ProfileRelationsBox data={allComunities} isComunitiesList />
+          <ProfileRelationsBox data={friendsList} isFriendsList />
         </div>
       </MainGrid>
     </>

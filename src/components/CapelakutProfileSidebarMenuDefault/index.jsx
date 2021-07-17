@@ -8,7 +8,6 @@ export function CapelakutProfileSidebarMenuDefault() {
 
   function signOut() {
     destroyCookie(undefined, "USER_TOKEN");
-
     Router.push("/login");
   }
 

@@ -1,9 +1,12 @@
 import React from "react";
+import Router from "next/router";
+import { destroyCookie } from "nookies";
 import styled, { css } from "styled-components";
-import { CapelakutProfileSidebarMenuDefault } from "../components/CapelakutProfileSidebarMenuDefault";
-import { Link } from "../components/Link";
 
-const BASE_URL = "http://Alurakut.vercel.app";
+import { Link } from "../components/Link";
+import { CapelakutProfileSidebarMenuDefault } from "../components/CapelakutProfileSidebarMenuDefault";
+
+const BASE_URL = "http://alurakut.vercel.app";
 const v = "1";
 
 // ================================================================================================================
@@ -11,6 +14,12 @@ const v = "1";
 // ================================================================================================================
 export function CapelakutMenu({ githubUser }) {
   const [isMenuOpen, setMenuState] = React.useState(false);
+
+  function signOut() {
+    destroyCookie(undefined, "USER_TOKEN");
+    Router.push("/login");
+  }
+
   return (
     <CapelakutMenu.Wrapper isMenuOpen={isMenuOpen}>
       <div className="container">
@@ -32,7 +41,9 @@ export function CapelakutMenu({ githubUser }) {
         </nav>
 
         <nav>
-          <a href={`/logout`}>Sair</a>
+          <a href="#" onClick={signOut}>
+            Sair
+          </a>
           <div>
             <input placeholder="Pesquisar no Orkut" />
           </div>

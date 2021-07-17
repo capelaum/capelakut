@@ -32,7 +32,7 @@ export default function LoginScreen() {
       return;
     }
 
-    toast.success("Usuário Github autenticado com sucesso");
+    toast.success("Usuário github autenticado com sucesso");
     nookies.set(null, "USER_TOKEN", token, {
       path: "/",
       maxAge: 24 * 60 * 60 * 7,
