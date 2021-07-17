@@ -70,6 +70,7 @@ export default function LoginScreen() {
 
         <section className="formArea">
           <form className="box" onSubmit={handleLogin}>
+            <i className="fab fa-github fa-2x"></i>
             <p>
               Acesse agora mesmo com seu usuário do <strong>GitHub</strong>!
             </p>

@@ -16,6 +16,10 @@ class MyDocument extends Document {
       <Html lang="pt-br">
         <Head>
           {this.props.styleTags}
+          <script
+            src="https://kit.fontawesome.com/80a77d1ec5.js"
+            crossorigin="anonymous"
+          ></script>
           <meta property="og:image" content="Capelakut.png" />
           <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         </Head>
