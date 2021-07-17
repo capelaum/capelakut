@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import nookies from "nookies";
+import { useRouter } from "next/router";
 
 import { Box } from "../components/Box";
 import { MainGrid } from "../components/MainGrid";
@@ -11,13 +13,12 @@ import { CapelakutMenu } from "../lib/CapelakutCommons";
 
 import { githubApi } from "../services/github";
 import myProjects from "../services/myProjects.json";
-import { getAllComunities, getAllComunityRecords } from "../services/datoCms";
+import { getAllComunityRecords } from "../services/datoCms";
 
-export default function Home({ allComunityRecords }) {
+export default function Home({ allComunityRecords, githubUser }) {
   const [friendsList, setFriendsList] = useState([]);
   const [projects, setProjects] = useState([]);
   const [allComunities, setAllComunities] = useState([...allComunityRecords]);
-  const githubUser = "capelaum";
 
   useEffect(() => {
     githubApi
@@ -111,23 +112,33 @@ export default function Home({ allComunityRecords }) {
   );
 }
 
-export async function getStaticProps() {
-  const COMUNITY_QUERY = `query {
-    allComunities {
-      id
-      title
-      creatorSlug
-      imageUrl
-    }
-  }`;
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  const token = cookies.USER_TOKEN;
 
-  const data = await getAllComunities({
-    query: COMUNITY_QUERY,
-  });
+  const { isAuthenticated, githubUser } = await fetch(
+    "http://localhost:3000/api/auth",
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  ).then(response => response.json());
+
+  console.log(isAuthenticated);
+
+  if (!isAuthenticated) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/login",
+      },
+    };
+  }
 
   const allComunityRecords = await getAllComunityRecords();
 
   return {
-    props: { allComunityRecords },
+    props: { allComunityRecords, githubUser },
   };
 }

@@ -16,6 +16,7 @@ class MyDocument extends Document {
       <Html lang="pt-br">
         <Head>
           {this.props.styleTags}
+          <meta property="og:image" content="Capelakut.png" />
           <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         </Head>
         <body>

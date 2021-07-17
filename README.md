@@ -52,6 +52,7 @@ yarn dev
 - [DatoCMS][datocms]
 - [Axios][axios]
 - [GraphQL][graphql]
+- [Nookies][nookies]
 
 ## Layout
 
@@ -67,4 +68,5 @@ Projeto feito no evento de Imersão React 3.0 da [Alura][alura] 💙
 [figma]: https://www.figma.com/file/xHF0n0qxiE2rqjqAILiBUB/Alurakut?node-id=58%3A0
 [axios]: https://axios-http.com/docs/intro
 [graphql]: https://graphql.org
-[datocms]: https://www.datocms.com/
+[datocms]: https://www.datocms.com
+[nookies]: https://www.npmjs.com/package/nookies
