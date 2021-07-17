@@ -117,7 +117,7 @@ export async function getServerSideProps(context) {
   const token = cookies.USER_TOKEN;
 
   const { isAuthenticated, githubUser } = await fetch(
-    "http://localhost:3000/api/auth",
+    "https://capelakut.vercel.app/api/auth",
     {
       headers: {
         Authorization: token,
