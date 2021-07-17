@@ -53,6 +53,7 @@ yarn dev
 - [Axios][axios]
 - [GraphQL][graphql]
 - [Nookies][nookies]
+- [React Toastify][react-toastify]
 
 ## Layout
 
@@ -70,3 +71,4 @@ Projeto feito no evento de Imersão React 3.0 da [Alura][alura] 💙
 [graphql]: https://graphql.org
 [datocms]: https://www.datocms.com
 [nookies]: https://www.npmjs.com/package/nookies
+[react-toastify]: https://www.npmjs.com/package/react-toastify
