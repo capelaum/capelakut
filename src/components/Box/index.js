@@ -43,9 +43,27 @@ export const Box = styled.div`
     padding: 14px 16px;
     margin-bottom: 14px;
     border-radius: 10000px;
+    font-size: 0.9rem;
+
     ::placeholder {
       color: #333333;
-      opacity: 1;
+      opacity: 0.7;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    background-color: #fff;
+    color: #333333;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    border: 0.5px solid #c5c6ca;
+    resize: vertical;
+
+    ::placeholder {
+      color: #333;
+      opacity: 0.8;
     }
   }
 
@@ -75,5 +93,31 @@ export const Box = styled.div`
 
   .option-btn:not(:last-child) {
     margin-right: 16px;
+  }
+
+  .testimonials-list {
+    li {
+      display: flex;
+      padding: 8px 0;
+      border-bottom: 1px solid #c5c6ca;
+
+      figure {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+
+        img {
+          border-radius: 50%;
+        }
+      }
+
+      .content {
+        padding: 0 12px;
+
+        p {
+          margin-top: 8px;
+        }
+      }
+    }
   }
 `;

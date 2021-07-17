@@ -11,7 +11,6 @@ export default async function githubAuth(req, res) {
   }
 
   const { githubUser } = tokenDecoded;
-
   const data = await fetch(`https://api.github.com/users/${githubUser}`).then(
     response => response.json()
   );

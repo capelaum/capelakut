@@ -33,3 +33,13 @@ export async function getAllComunityRecords() {
 
   return records;
 }
+
+export async function getAllTestimonialRecords() {
+  const client = new SiteClient(process.env.DATOCMS_READ_API_TOKEN);
+
+  const records = await client.items.all({
+    "filter[type]": "testimonial",
+  });
+
+  return records;
+}
