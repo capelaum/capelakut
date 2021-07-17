@@ -232,7 +232,11 @@ export default function Home({
                   </figure>
 
                   <div className="content">
-                    <a href="" className="boxLink">
+                    <a
+                      className="boxLink"
+                      href={`https://github.com/${testimonial.username}`}
+                      target="_blank"
+                    >
                       @{testimonial.username}
                     </a>
                     <p>{testimonial.text}</p>

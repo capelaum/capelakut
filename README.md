@@ -9,6 +9,11 @@
   <img alt="capelakut last commit" src="https://img.shields.io/github/last-commit/capelaum/capelakut?color=D81D99">
 
   <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=D81D99">
+  <h4>
+    <a href="https://capelakut.vercel.app" target="_blank">
+      Live Demo
+    </a>
+  </h4>
 </div>
 
 ## Como executar
