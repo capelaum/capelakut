@@ -14,7 +14,7 @@ import myProjects from "../services/myProjects.json";
 import { githubApi } from "../services/github";
 import { Box } from "../components/Box";
 
-export default function Comunities({ githubUser }) {
+export default function Comunities({ allComunities, githubUser }) {
   const [projects, setProjects] = useState([]);
   const [friendsList, setFriendsList] = useState([]);
 
@@ -40,7 +40,7 @@ export default function Comunities({ githubUser }) {
 
         <div className="welcomeArea">
           <Box>
-            <h2 className="title">Minhas comunidades</h2>
+            <h2 className="title">Meus Amigos</h2>
 
             <span className="path">
               <a className="boxLink" href="/">
@@ -72,7 +72,7 @@ export default function Comunities({ githubUser }) {
 
         <div className="profileRelationsArea">
           <ProfileRelationsBox data={projects} isProjectsList />
-          <ProfileRelationsBox data={friendsList} isFriendsList />
+          <ProfileRelationsBox data={allComunities} isComunitiesList />
         </div>
       </MainGrid>
     </>
