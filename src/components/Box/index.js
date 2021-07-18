@@ -15,7 +15,7 @@ export const Box = styled.div`
   .title {
     font-size: 32px;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .subTitle {
     font-size: 18px;
@@ -93,6 +93,11 @@ export const Box = styled.div`
 
   .option-btn:not(:last-child) {
     margin-right: 16px;
+  }
+
+  .quote {
+    color: #999999;
+    font-size: 0.9rem;
   }
 
   .testimonials-list {
