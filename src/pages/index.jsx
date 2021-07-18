@@ -3,11 +3,12 @@ import Head from "next/head";
 import nookies from "nookies";
 import { toast } from "react-toastify";
 
-import { Box } from "../components/Box";
+import { FormBox } from "../components/FormBox";
 import { MainGrid } from "../components/MainGrid";
+import { WelcomeBox } from "../components/WelcomeBox";
 import { ProfileSidebar } from "../components/ProfileSidebar";
+import { TestimonialsBox } from "../components/TestimonialsBox";
 import { ProfileRelationsBox } from "../components/ProfileRelationsBox";
-import { OrkutNostalgicIconSet } from "../components/OrkutNostalgicIconSet";
 
 import { CapelakutMenu } from "../lib/CapelakutCommons";
 
@@ -23,27 +24,25 @@ export default function Home({
   allTestimonialRecords,
   githubUser,
 }) {
-  const allComunitiesData = allComunityRecords ? allComunityRecords : [];
-  const allTestimonialsData = allTestimonialRecords
-    ? allTestimonialRecords
-    : [];
-
   const [projects, setProjects] = useState([]);
   const [friendsList, setFriendsList] = useState([]);
-  const [isComunityOption, setIsComunityOption] = useState(true);
-  const [allComunities, setAllComunities] = useState([...allComunitiesData]);
-
-  const [allTestimonials, setAllTestimonials] = useState([
-    ...allTestimonialsData,
-  ]);
 
   useEffect(() => {
     githubApi
       .get(`${githubUser}/followers`)
       .then(response => setFriendsList(response.data))
       .catch(error => console.error(error));
+
     setProjects(myProjects);
   }, []);
+
+  const allComunitiesData = allComunityRecords ?? [];
+  const allTestimonialsData = allTestimonialRecords ?? [];
+
+  const [allComunities, setAllComunities] = useState([...allComunitiesData]);
+  const [allTestimonials, setAllTestimonials] = useState([
+    ...allTestimonialsData,
+  ]);
 
   function handleCreateCommunity(e) {
     e.preventDefault();
@@ -86,10 +85,9 @@ export default function Home({
     e.preventDefault();
     const formData = new FormData(event.target);
     const text = formData.get("testimonial");
-    console.log("🚀 ~ testimonial", text);
 
     if (text.trim() === "") {
-      toast.error("Por favor preencha o campo para Criar Depoimento 🙃");
+      toast.error("Por favor preencha o campo para Enviar Depoimento 🙃");
       return;
     }
 
@@ -109,18 +107,7 @@ export default function Home({
       setAllTestimonials([...allTestimonials, data.record]);
     });
 
-    event.target.testimonial.value = "";
-  }
-
-  function handleSetActiveButton(e) {
-    e.preventDefault();
-
-    const optionButtons = document.getElementsByClassName("option-btn");
-    Array.from(optionButtons).forEach(btn => btn.classList.remove("active"));
-    e.target.classList.add("active");
-
-    const isComunityOption = e.target.id === "comunity-btn" ? true : false;
-    setIsComunityOption(isComunityOption);
+    e.target.testimonial.value = "";
   }
 
   return (
@@ -135,116 +122,14 @@ export default function Home({
         </div>
 
         <div className="welcomeArea">
-          <Box>
-            <h1 className="title">Bem vindo(a), {githubUser}</h1>
-            <OrkutNostalgicIconSet
-              recados={5}
-              fotos={33}
-              videos={15}
-              fas={999}
-              mensagens={666}
-              confiavel={3}
-              legal={3}
-              sexy={3}
-            />
-          </Box>
+          <WelcomeBox githubUser={githubUser} />
 
-          <Box>
-            <h2 className="subTitle">O que você deseja fazer?</h2>
+          <FormBox
+            handleCreateCommunity={handleCreateCommunity}
+            handleCreateTestimonial={handleCreateTestimonial}
+          />
 
-            <button
-              id="comunity-btn"
-              className="option-btn active"
-              onClick={e => handleSetActiveButton(e)}
-            >
-              Criar Comunidade
-            </button>
-
-            <button
-              id="testimonial-btn"
-              className="option-btn"
-              onClick={e => handleSetActiveButton(e)}
-            >
-              Escrever depoimento
-            </button>
-
-            {isComunityOption ? (
-              <form onSubmit={handleCreateCommunity}>
-                <div>
-                  <input
-                    type="text"
-                    name="title"
-                    placeholder="Qual vai ser o nome da Comunidade?"
-                    aria-label="Qual vai ser o nome da Comunidade?"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    name="url"
-                    placeholder="Coloque uma URL para a Comunidade"
-                    aria-label="Coloque uma URL para a Comunidade"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    name="image"
-                    placeholder="Coloque uma URL para usarmos de capa"
-                    aria-label="Coloque uma URL para usarmos de capa"
-                  />
-                </div>
-
-                <button className="submit-btn">Criar Comunidade</button>
-              </form>
-            ) : (
-              <form onSubmit={handleCreateTestimonial}>
-                <div>
-                  <textarea
-                    name="testimonial"
-                    placeholder="Deixe um depoimento 🙃"
-                    aria-label="Deixe um depoimento 🙃"
-                  ></textarea>
-                </div>
-                <button className="submit-btn">Enviar Depoimento</button>
-              </form>
-            )}
-          </Box>
-
-          <Box>
-            <h2 className="smallTitle">
-              Depoimentos ({allTestimonials.length})
-            </h2>
-            <ul className="testimonials-list">
-              {allTestimonials.sort().map(testimonial => (
-                <li key={testimonial.id}>
-                  <figure>
-                    <a
-                      href={`https://github.com/${testimonial.username}`}
-                      target="_blank"
-                      className="username"
-                    >
-                      <img
-                        src={`https://github.com/${testimonial.username}.png`}
-                        alt={testimonial.username}
-                      />
-                    </a>
-                  </figure>
-
-                  <div className="content">
-                    <a
-                      className="boxLink"
-                      href={`https://github.com/${testimonial.username}`}
-                      target="_blank"
-                    >
-                      @{testimonial.username}
-                    </a>
-                    <p>{testimonial.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </Box>
+          <TestimonialsBox allTestimonials={allTestimonials} />
         </div>
 
         <div className="profileRelationsArea">
