@@ -120,4 +120,46 @@ export const Box = styled.div`
       }
     }
   }
+
+  .path {
+    font-size: 0.9rem;
+    color: #999999;
+
+    a {
+      font-weight: 600;
+    }
+  }
+
+  .comunity-list {
+    border-radius: 8px;
+    li {
+      list-style: none;
+      padding: 12px;
+
+      a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      span {
+        font-size: 1.2rem;
+        padding-left: 16px;
+        color: #2e7bb4;
+      }
+
+      img {
+        width: 15%;
+        border-radius: 50%;
+      }
+    }
+
+    li:nth-child(even) {
+      background: #d9e6f6;
+    }
+
+    li:nth-child(odd) {
+      background: #f1f9fe;
+    }
+  }
 `;

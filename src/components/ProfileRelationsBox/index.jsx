@@ -53,7 +53,7 @@ export function ProfileRelationsBox({
           ))}
         </ul>
         <hr />
-        <a href="/friends" className="boxLink" target="_blank">
+        <a href="/friends" className="boxLink">
           Ver Todos
         </a>
       </ProfileRelationsBoxWrapper>
@@ -66,7 +66,7 @@ export function ProfileRelationsBox({
         <h2 className="smallTitle">Minhas Comunidades ({data.length})</h2>
         <ul>
           {data.slice(0, 6).map(comunity => (
-            <li key={`${comunity.id}`}>
+            <li key={comunity.id}>
               <a href={comunity.url} target="_blank">
                 <img src={comunity.imageUrl} alt={comunity.title} />
                 <span>{comunity.title}</span>
@@ -75,7 +75,7 @@ export function ProfileRelationsBox({
           ))}
         </ul>
         <hr />
-        <a href="/comunities" className="boxLink" target="_blank">
+        <a href="/comunities" className="boxLink">
           Ver Todos
         </a>
       </ProfileRelationsBoxWrapper>
