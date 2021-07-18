@@ -1,7 +1,7 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { DatoProvider } from "../hooks/useDato";
 import { CapelakutStyles } from "../lib/CapelakutCommons";
 
 const GlobalStyle = createGlobalStyle`
@@ -46,8 +46,10 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-        <ToastContainer autoClose={3000} />
+        <DatoProvider>
+          <Component {...pageProps} />
+          <ToastContainer autoClose={3000} />
+        </DatoProvider>
       </ThemeProvider>
     </>
   );
