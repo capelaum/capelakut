@@ -27,6 +27,14 @@ export default function Home({
   const [projects, setProjects] = useState([]);
   const [friendsList, setFriendsList] = useState([]);
 
+  const allComunitiesData = allComunityRecords ?? [];
+  const allTestimonialsData = allTestimonialRecords ?? [];
+
+  const [allComunities, setAllComunities] = useState([...allComunitiesData]);
+  const [allTestimonials, setAllTestimonials] = useState([
+    ...allTestimonialsData,
+  ]);
+
   useEffect(() => {
     githubApi
       .get(`${githubUser}/followers`)
@@ -35,14 +43,6 @@ export default function Home({
 
     setProjects(myProjects);
   }, []);
-
-  const allComunitiesData = allComunityRecords ?? [];
-  const allTestimonialsData = allTestimonialRecords ?? [];
-
-  const [allComunities, setAllComunities] = useState([...allComunitiesData]);
-  const [allTestimonials, setAllTestimonials] = useState([
-    ...allTestimonialsData,
-  ]);
 
   function handleCreateCommunity(e) {
     e.preventDefault();

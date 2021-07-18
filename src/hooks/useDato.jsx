@@ -13,15 +13,6 @@ import {
 const DatoContext = createContext({});
 
 export function DatoProvider({ children }) {
-  // const allComunityRecords = getAllComunityRecords();
-  // const allTestimonialRecords = getAllTestimonialRecords();
-
-  // const allComunitiesData = allComunityRecords ?? [];
-  // console.log("🚀 ~ allComunitiesData", allComunitiesData);
-
-  // const allTestimonialsData = allTestimonialRecords ?? [];
-  // console.log("🚀 ~ allTestimonialsData", allTestimonialsData);
-
   const [allComunities, setAllComunities] = useState([]);
   const [allTestimonials, setAllTestimonials] = useState([]);
 
@@ -30,9 +21,9 @@ export function DatoProvider({ children }) {
     const allTestimonialRecords = await getAllTestimonialRecords();
 
     const allComunitiesData = allComunityRecords ?? [];
-    console.log("🚀 ~ allComunitiesData", allComunitiesData);
-
     const allTestimonialsData = allTestimonialRecords ?? [];
+
+    console.log("🚀 ~ allComunitiesData", allComunitiesData);
     console.log("🚀 ~ allTestimonialsData", allTestimonialsData);
 
     setAllComunities([...allComunitiesData]);
@@ -40,7 +31,7 @@ export function DatoProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    fetchDatoCMS();
+    // fetchDatoCMS();
   }, [fetchDatoCMS]);
 
   function handleCreateCommunity(e) {
