@@ -5,7 +5,6 @@ import nookies from "nookies";
 import { getAllComunityRecords } from "../services/datoCms";
 
 import { MainGrid } from "../components/MainGrid";
-import { WelcomeBox } from "../components/WelcomeBox";
 import { ProfileSidebar } from "../components/ProfileSidebar";
 import { ProfileRelationsBox } from "../components/ProfileRelationsBox";
 
